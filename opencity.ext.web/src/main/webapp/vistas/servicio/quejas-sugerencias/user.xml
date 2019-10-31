@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sede="http://www.zaragoza.es" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <sede:meta title="Quejas y sugerencias" keywords="sede,quejas,sugerencias,información" />
+    <meta name="robots" content="noindex, nofollow"/>
+</head>
+
+<body>
+    <sede:content>
+        <ul class="list-inline">
+            <li><a href="?status=open" th:class="(!${param.status} or ${#strings.equals(param.status[0],'open')}) ? 'btn btn-warning' : 'btn btn'">Pendientes</a></li>
+            <li><a href="?status=closed" th:class="(!${param.status} or ${#strings.equals(param.status[0],'closed')}) ? 'btn btn-success' : 'btn btn'">Cerradas</a></li>
+            <li class="pull-right">
+                <a href="./new" class="btn btn-primary">Nueva</a>
+            </li>
+        </ul>
+        <ul class="list-unstyled">
+            <li class="card" th:each="registro : ${resultado.body.result}" sede:rdf="${registro.voc()}" th:attr="about=${registro.uri}">
+                <strong sede:rdf="${registro.get('title')}"></strong>
+                <a class="label label-info" th:href="'?service_code='+${registro.service_code}">
+                    <th:block sede:rdf="${registro.get('service_name')}" />
+                </a>
+                <th:block th:switch="${registro.status}">
+                    <span th:case="'open'" property="Status" content="open" class="label label-warning">Pendiente</span>
+                    <span th:case="'closed'" property="Status" content="closed" class="label label-success">Cerrada</span>
+                </th:block>
+                <span sede:rdf="${registro.get('requested_datetime')}"></span>
+                <div><pre sede:rdf="${registro.get('description')}" class="shorten"></pre></div>
+                <div th:if="!${#strings.isEmpty(registro.service_notice)}"><span class="label label-danger">Respuesta</span> <span sede:rdf="${registro.get('requested_datetime')}"></span><pre sede:rdf="${registro.get('service_notice')}" class="shorten"></pre></div>
+                <th:block th:utext="${registro.getRdf()}"></th:block>
+            </li>
+        </ul>
+        <th:block th:utext="${resultado.body.getPaginacion(#httpServletRequest)}" />
+    </sede:content>
+    <script type="text/javascript" src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(".shorten").shorten({
+            "showChars": 200,
+            "moreText": "Más",
+            "lessText": "Menos",
+        });
+    });
+    </script>
+</body>
+
+</html>
