@@ -145,6 +145,8 @@ Existen librerías que no están disponibles en repositorios maven, son las que 
 ```
 $ mvn install:install-file -DgroupId=org.zaragoza -DartifactId=opencity.ext.core -Dversion=0.0.1 -Dpackaging=jar -Dfile=<path>/opencity.ext.core-0.0.1.jar -DgeneratePom=true
 
+$ mvn install:install-file -DgroupId=org.zaragoza -DartifactId=opencity.ext.core.test -Dversion=0.0.1 -Dpackaging=jar -Dfile=<path>/opencity.ext.core.test-0.0.1.jar -DgeneratePom=true
+
 $ mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc5 -Dversion=11.2.0 -Dpackaging=jar -Dfile=<path>/ojdbc5.jar -DgeneratePom=true
 
 $ mvn install:install-file -DgroupId=virtuoso.jena.driver -DartifactId=virtjdbc -Dversion=3 -Dpackaging=jar -Dfile=<path>/virtjdbc.jar -DgeneratePom=true
