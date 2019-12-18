@@ -30,6 +30,7 @@ import org.sede.core.rest.MimeTypes;
 import org.sede.core.rest.Peticion;
 import org.sede.core.rest.view.TransformadorXml;
 import org.sede.core.utils.Funciones;
+import org.sede.servicio.mapacolaborativo.ConfigMapaColaborativo;
 import org.sede.servicio.mapacolaborativo.entity.Category;
 import org.sede.servicio.mapacolaborativo.entity.MapaColaborativo;
 import org.sede.servicio.mapacolaborativo.entity.Poi;
@@ -53,7 +54,8 @@ import com.googlecode.genericdao.search.SearchResult;
  *
  */
 @Repository
-@Transactional(Esquema.TMPARTICIPACION)
+//@Transactional(Esquema.TMPARTICIPACION)
+@Transactional(ConfigMapaColaborativo.TM)
 public class MapaColaborativoGenericDAOImpl implements MapaColaborativoDAO {
 	/**
 	 *  variable logger
@@ -71,7 +73,8 @@ public class MapaColaborativoGenericDAOImpl implements MapaColaborativoDAO {
 	/**
 	 *  Metodo setEntityManager
 	 */
-	@PersistenceContext(unitName=Esquema.PARTICIPACION)
+//	@PersistenceContext(unitName=Esquema.PARTICIPACION)
+	@PersistenceContext(unitName=ConfigMapaColaborativo.ESQUEMA)
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}

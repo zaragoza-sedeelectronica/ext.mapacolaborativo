@@ -56,7 +56,8 @@ import com.googlecode.genericdao.search.SearchResult;
  *
  */
 @Gcz(servicio="MAPACOLABORATIVO",seccion="MAPA")
-@Transactional(Esquema.TMPARTICIPACION)
+//@Transactional(Esquema.TMPARTICIPACION)
+@Transactional(ConfigMapaColaborativo.TM)
 @Controller
 @RequestMapping(value = "/" + MapaColaborativoController.MAPPING, method = RequestMethod.GET)
 @Description("Gobierno abierto: Mapas colaborativos")

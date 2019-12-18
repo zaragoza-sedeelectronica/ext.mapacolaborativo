@@ -5,11 +5,15 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration(value = "mapacolaborativoCfg")
 public class ConfigMapaColaborativo implements PropertyFileInterface {
+	
+	public static final String ESQUEMA = "GENERAL";
+	public static final String TM = "transactionManagerGeneral";
+	
 	public String getSchema() {
-		return "participacion";
+		return "general";
 	}
 	public String getJndi() {
-		return "WebParticipacionDS";
+		return "WebGeneralDS";
 	}
 
 	public String getEntity() {
