@@ -124,10 +124,10 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<path>/sede</path>
+					<path>/opencityext</path>
 					<contextReloadable>false</contextReloadable>
 					<contextFile>${project.basedir}/src/main/resources/META-INF/context.xml</contextFile>
-					<port>7777</port>
+					<port>8888</port>
 				</configuration>
 			</plugin>
 

@@ -1,64 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-<Resource name="jdbc/WebParticipacionDS" auth="Container"
+<Resource name="jdbc/WebGeneralDS" auth="Container"
               type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="participacion" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/>
-<Resource name="jdbc/WebNoticiasDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="noticias" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/>
-<!-- <Resource name="jdbc/TicketingDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="ticketing" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/>
- <Resource name="jdbc/TicketingDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="ticketingtmp" password="ticketingtmp" maxActive="20" maxIdle="10"
-              maxWait="-1"/> 
-<Resource name="jdbc/WebMovilDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="movil" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/>
-<Resource name="jdbc/WebAgendaDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="actividades" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/>
-<Resource name="jdbc/WebIntraDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="intra" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/> 
-<Resource name="jdbc/WebTurismoDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="turismo" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/>
-<Resource name="jdbc/WebOfertaDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="oferta" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/>
-<Resource name="jdbc/WebPerfilDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="perfilcontratante" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/> 
-<Resource name="jdbc/WebReglicDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="reglic" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/> 
-<Resource name="jdbc/WebSiuDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="siu" password="password" maxActive="20" maxIdle="10"
-              maxWait="-1"/> -->
- 
+              url="jdbc:oracle:thin:@localhost:1111/ORCL"
+              username="general" password="password" maxActive="20" maxIdle="10"
+              maxWait="-1"/>              
+
 </Context>

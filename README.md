@@ -43,56 +43,42 @@ Una vez instalado Eclipse, hay que instalar  maven integration for eclipse desde
 
 # Configurar la base de datos
 
-El sistema de mapas colaborativos utiliza dos usuarios diferentes para:
+El sistema de mapas colaborativos utiliza un usuario general para las bases de datos. Este ususario permite la gestión de los datos de usuarios de la plataforma y los datos de los mapas colaborativos.
 
-* noticias: de donde toma los datos de usuarios
-* participacion: de donde toma los datos de los mapas colaborativos
-
-Por lo tanto, hay que configurar las dos bases de datos para que el modulo funcione correctamente. Para eso hay que realizar los siguientes pasos:
-* generar los usuarios en Oracle
+Por lo tanto, hay que configurar una única bases de datos para que el modulo funcione correctamente. Para eso hay que realizar los siguientes pasos:
+* generar el usuario en Oracle
 * ejecutar los scripts de generación de las bases de datos
-* configurar las bases de datos en el proyecto sede
+* configurar las bases de datos en el proyecto opencity.ext.web
 
 A continuación se detallan los pasos a seguir en cada uno de ellos.
 
 ## Generar los usuarios en Oracle
 
-Como se indica en el apartado anterior, hay que generar dos usuarios para noticias y participacion. Los usuarios se deben generar en Oracle ya que el sistema de mapas colaborativos utiliza Oracle.
+Como se indica en el apartado anterior, hay que generar un usuario para la base de datos. El usuario se debe generar en Oracle ya que el sistema de mapas colaborativos utiliza Oracle.
 
-Se aconseja que los nombres de los usuarios sean "noticias" y "participacion" para una mayor claridad en el uso de los mismos. Además, ambos usuarios deben poder acceder al contenido del otro. A continuación se muestran los comandos que deben utilizarse en la consola de SQL*Plus, si se utiliza dicha consola para realizar este paso.
+Se aconseja que el nombre del usuario sea "general" ya que es el que se utiliza en el core de la aplicación. A continuación se muestran los comandos que deben utilizarse en la consola de SQL*Plus, si se utiliza dicha consola para realizar este paso.
 
 Para generar un usuario, se utilizarían los comandos:
 ```
-CREATE USER noticias IDENTIFIED BY "password";
-CREATE USER participacion IDENTIFIED BY "password";
+CREATE USER general IDENTIFIED BY "password";
 ```
 
-Para otorgar privilegios a los usuarios, se utilizarían los comandos:
-```
-GRANT ALL PRIVILEGES TO noticias;
-GRANT ALL PRIVILEGES TO participacion;
-```
-
-Con estos pasos, ya estarías los usuarios y los privilegios necesarios para ambos.
+Con este paso, ya estaría el usuario creado.
 
 ## Ejecutar los scripts de generación de las bases de datos
 
-El siguiente paso es crear las tablas asociadas a cada usuario y cargar los datos de prueba disponibles en cada uno de ellos. Para cada uno de los usuarios, hay una serie de scripts disponibles:
-
-* noticias: los ficheros a usar están en [scripts-bbdd/noticias/](scripts-bbdd/noticias/)
-* participacion: los ficheros están disponibles en [scripts-bbdd/participacion/](scripts-bbdd/participacion/)
+El siguiente paso es crear las tablas y cargar los datos de prueba disponibles para este módulo. Los scripts que se van a importar están disponibles en la carpeta [scripts-bbdd/](scripts-bbdd/).
 
 El orden de ejecución es el siguiente:
 
-* noticias:
-    * db.sql
-	* users_data.sql
-    * users_db.sql
-* participacion:
-	* db.sql
-	* package.sql
-	* package_body.sql
-	* data.sql
+* 1.db.sql
+* 2.users_db.sql
+* 3.users_data.sql
+* 4.extra_users.sql
+* 5.db.sql
+* 6.data.sql
+* 7.package.sql
+* 8.package_body.sql
 	
 Una vez realizados estos pasos, ya estaría lista la base de datos en Oracle. 
 
@@ -101,31 +87,6 @@ Una vez realizados estos pasos, ya estaría lista la base de datos en Oracle.
 A continuación se listan los repositorios a clonar: 
 
 * mapas colaborativos: https://bitbucket.org/masilgado/mapas-colaborativos.git
-* assets: Es un repositorio que almacena componentes (css, javascript) que se reutiliza en diferentes portales o servicios.
-**Clonar el repositorio:**
-```
-	https://bitbucket.org/zaragoza/sede.assets.git
-```
-
-* fragmentos: Es un repositorio que almacena código que se reutiliza en diferentes portales o servicios.  
-**Clonar el repositorio:**
-```
-	https://<usuario>@bitbucket.org/zaragoza/sede.fragmentos.git
-```
-
-* servicio: En este repositorio se almacenan las plantillas que se generan desde cada uno de los Controllers existentes en sede.  
-**Clonar el repositorio:**
-```
-	https://<usuario>@bitbucket.org/zaragoza/sede.servicio.git
-```
-
-* portal: Crear manualmente el directorio `portal` al mismo nivel que `fragmentos` y `servicio`
-Repositorio que almacena los portales y/o páginas estáticas. Permite establecer subdirectorios para indicar portales secundarios recogidos bajo un portal principal.  
-**Clonar el repositorio:**
-```
-	https://<usuario>@bitbucket.org/zaragoza/sede.portal.git
-```
-
 * i18n (internalización)
 En `bean-I18n.xml` se define la configuración de localización de los ficheros de cada idioma, se debe crear un fichero por idioma, por ejemplo, `messages_es.properties` para castellano.
 ```
@@ -190,22 +151,20 @@ El contenido de los proyectos clonados deben estar dispuestos con la siguiente e
 
 ```
 cont
-|--- assets (repositorio https://<usuario>@bitbucket.org/zaragoza/sede.assets.git)
+|--- assets (se coje el contenido de la carpeta opencity.ext.web\src\main\webapp\assets)
 cont/vistas
-|--- fragmentos (repositorio https://<usuario>@bitbucket.org/zaragoza/sede.fragmentos.git)
-|--- servicio (repositorio https://<usuario>@bitbucket.org/zaragoza/sede.servicio.git)
-|--- portal
-|---|----- datos-abiertos (repositorio https://<usuario>@bitbucket.org/zaragoza/sede.portal.datos-abiertos.git)
+|--- fragmentos (se coje el contenido de la carpeta opencity.ext.web\src\main\webapp\fragmentos)
+|--- servicio (se coje el contenido de la carpeta opencity.ext.web\src\main\webapp\servicio)
 ```
 
 Una vez realizado este paso, hay que configurar un servidor apache para que pueda servir contenidos estáticos. Para ello, hay que incluir en su configuración un proxy inverso:
 
 ```
-ProxyPass /sede http://localhost:8888/opencityext
-ProxyPassReverse /sede http://localhost:8888/opencityext
+ProxyPass /opencityext http://localhost:8888/opencityext
+ProxyPassReverse /opencityext http://localhost:8888/opencityext
 
-ProxyPass /sede http://localhost:8888/cont
-ProxyPassReverse /sede http://localhost:8888/cont
+ProxyPass /opencityext http://localhost:8888/cont
+ProxyPassReverse /opencityext http://localhost:8888/cont
 ```
 
 Si el contenido del directorio `cont` no se sirve mediante un servidor sino como un contenido estático, hay que habilitar los modulos `proxy` y `http_proxy` en el servidor Apache e incluir en el fichero de configuración:
@@ -226,7 +185,7 @@ Lo primero sería realizar
 $ mvn clean install
 ```
 
-dentro del proyecto `opencity.ext.mapas` 
+dentro del proyecto `opencity.ext.mapacolaborativo` 
 
 Una vez realizad, hay que configurar los diferentes ficheros de configuración que se utilizan en el proyecto.
 
@@ -243,15 +202,10 @@ Esta definición se puede realizar para cada uno de los entornos en `resources`,
 Los datos de conexión a la BBDD se define en `opencity.ext.web/src/main/resources/META-INF/context.xml` (es necesario copiar `opencity.ext.web/src/main/resources/META-INF/context.xmltemplate` como `opencity.ext.web/src/main/resources/META-INF/context.xml` para modificarlo):
 
 ```
-<Resource name="jdbc/WebParticipacionDS" auth="Container"
+<Resource name="jdbc/WebGeneralDS" auth="Container"
               type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
               url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="USER" password="PASS" maxActive="20" maxIdle="10"
-              maxWait="-1"/>
-<Resource name="jdbc/WebNoticiasDS" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
-              username="USER" password="PASS" maxActive="20" maxIdle="10"
+              username="general" password="PASS" maxActive="20" maxIdle="10"
               maxWait="-1"/>
 ```
 

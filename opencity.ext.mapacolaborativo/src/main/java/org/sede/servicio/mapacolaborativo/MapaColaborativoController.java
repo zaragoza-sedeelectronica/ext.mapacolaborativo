@@ -286,7 +286,7 @@ public class MapaColaborativoController {
 	@Permisos(Permisos.NEW)
 	@Description("Crear registro")
 	@ResponseClass(value = MapaColaborativo.class)
-	@Transactional(Esquema.TMINTRA)
+	@Transactional(ConfigMapaColaborativo.TM)
 	public @ResponseBody ResponseEntity<?> apiCrear(
 			@PathVariable String accountId,
 			@RequestBody MapaColaborativo registro) {
@@ -423,7 +423,7 @@ public class MapaColaborativoController {
 	@PermisosUser
 	@Description("Crear registro")
 	@ResponseClass(value = MapaColaborativo.class)
-	@Transactional(Esquema.TMINTRA)
+	@Transactional(ConfigMapaColaborativo.TM)
 	public @ResponseBody ResponseEntity<?> apiCrearPublic(
 			@RequestBody MapaColaborativo registro, HttpServletRequest request) {
 		return dao.crear(registro, Funciones.getAccountIdUserGestor(request), Funciones.getPeticion());
@@ -452,7 +452,7 @@ public class MapaColaborativoController {
 	@PermisosUser
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET, produces = {
 			MediaType.TEXT_HTML_VALUE, "*/*" })
-	@Transactional(Esquema.TMINTRA)
+	@Transactional(ConfigMapaColaborativo.TM)
 	public String eliminar(
 			@PathVariable BigDecimal id,
 			@RequestParam(name = "ids", required = false) String ids, 
