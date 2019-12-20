@@ -79,6 +79,8 @@ El orden de ejecución es el siguiente:
 * 6.data.sql
 * 7.package.sql
 * 8.package_body.sql
+* extra_users.sql
+* test_data.sql
 	
 Una vez realizados estos pasos, ya estaría lista la base de datos en Oracle. 
 
@@ -212,6 +214,19 @@ Los datos de conexión a la BBDD se define en `opencity.ext.web/src/main/resourc
 Hay que indicar los valores de los campos `url`, `user` y `password`.
 
 # Prueba del módulo
+
+## Pruebas unitarias
+
+Para una prueba rápida del módulo, se pueden ejecutar las pruebas unitarias que hay en el proyecto opencity.ext.mapacolaborativo. Para poder ejecutar la prueba, hay que configurar los siguientes campos en el fichero `opencity.ext.mapacolaborativo/src/test/resources/test.properties`:
+
+* conexion.jdbc para indicar la conexión con la base de datos
+* db.general.pass para indicar la contraseña del usuario general creado anteriormente
+
+El resto de campos del fichero no deberían modificarse.
+
+Una vez modificado, se pueden lanzar las pruebas unitarias seleccionando la clase `opencity.ext.mapacolaborativo/src/test/org/sede/servicio/MapaColaborativoApiTest`, pulsar el botón derecho y seleccionar `Run as --> JUnitTest`
+
+## Pruebas módulo web
 
 Para lanzar el módulo, hay que ejecutar la siguiente instrucción:
 ```
