@@ -27,8 +27,6 @@ import org.sede.servicio.acceso.entity.Credenciales;
 import org.sede.servicio.mapacolaborativo.dao.MapaColaborativoDAO;
 import org.sede.servicio.mapacolaborativo.entity.MapaColaborativo;
 import org.sede.servicio.mapacolaborativo.entity.Poi;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -56,14 +54,12 @@ import com.googlecode.genericdao.search.SearchResult;
  *
  */
 @Gcz(servicio="MAPACOLABORATIVO",seccion="MAPA")
-//@Transactional(Esquema.TMPARTICIPACION)
 @Transactional(ConfigMapaColaborativo.TM)
 @Controller
 @RequestMapping(value = "/" + MapaColaborativoController.MAPPING, method = RequestMethod.GET)
 @Description("Gobierno abierto: Mapas colaborativos")
 // TODO añadir anotación cache en apidetalle(hacer que no haya caché al modificar)
 public class MapaColaborativoController {
-	private static final Logger logger = LoggerFactory.getLogger(MapaColaborativoController.class);
 	/**
 	 *  Variable servicio
 	 */

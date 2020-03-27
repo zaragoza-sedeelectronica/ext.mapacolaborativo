@@ -30,6 +30,7 @@ import org.sede.core.rest.MimeTypes;
 import org.sede.core.rest.Peticion;
 import org.sede.core.rest.view.TransformadorXml;
 import org.sede.core.utils.Funciones;
+import org.sede.core.utils.Propiedades;
 import org.sede.servicio.mapacolaborativo.ConfigMapaColaborativo;
 import org.sede.servicio.mapacolaborativo.entity.Category;
 import org.sede.servicio.mapacolaborativo.entity.MapaColaborativo;
@@ -54,7 +55,6 @@ import com.googlecode.genericdao.search.SearchResult;
  *
  */
 @Repository
-//@Transactional(Esquema.TMPARTICIPACION)
 @Transactional(ConfigMapaColaborativo.TM)
 public class MapaColaborativoGenericDAOImpl implements MapaColaborativoDAO {
 	/**
@@ -73,7 +73,6 @@ public class MapaColaborativoGenericDAOImpl implements MapaColaborativoDAO {
 	/**
 	 *  Metodo setEntityManager
 	 */
-//	@PersistenceContext(unitName=Esquema.PARTICIPACION)
 	@PersistenceContext(unitName=ConfigMapaColaborativo.ESQUEMA)
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
@@ -538,7 +537,7 @@ public class MapaColaborativoGenericDAOImpl implements MapaColaborativoDAO {
 	/**
 	 * Metodo listado de categorias 
 	 */
-//	@Override
+	@Override
 	public SearchResult<Category> listadoCategorias() {
 		return em().unwrap(Session.class).doReturningWork(new ReturningWork<SearchResult<Category>>() {					
 			public SearchResult<Category> execute(Connection connection) throws SQLException {
@@ -596,7 +595,7 @@ public class MapaColaborativoGenericDAOImpl implements MapaColaborativoDAO {
 	/**
 	 * Metodo busqueda
 	 */
-//	@Override
+	@Override
 	public String find(String tipo, String identifier) {
 		try {
 			BigDecimal id = null;
@@ -607,7 +606,7 @@ public class MapaColaborativoGenericDAOImpl implements MapaColaborativoDAO {
 			if (id == null) {
 				return null;
 			} else {
-				return "/opencityext/servicio/mapa-colaborativo/" + identifier + "/" + tipo;
+				return Propiedades.getContexto() + "/servicio/mapa-colaborativo/" + identifier + "/" + tipo;
 			}
 		} catch (NoResultException e) {
 			return null;
@@ -617,7 +616,7 @@ public class MapaColaborativoGenericDAOImpl implements MapaColaborativoDAO {
 	/**
 	 * Metodo busqueda de id
 	 */
-//	@Override
+	@Override
 	public Integer findId(String tipo, String identifier) {
 		try {
 			BigDecimal id = null;
@@ -638,7 +637,7 @@ public class MapaColaborativoGenericDAOImpl implements MapaColaborativoDAO {
 	/**
 	 * Metodo asociar tipo
 	 */
-//	@Override
+	@Override
 	public void asociarTipo(BigDecimal id, String tipo, String associatedId) {
 		Query update = em().createNativeQuery(
 				"insert into POI_AGRUPACION_ASSOCIATED_TYPE(ID_AGRUPACION,TIPO,ASSOCIATED_ID) values (?,?,?)");
