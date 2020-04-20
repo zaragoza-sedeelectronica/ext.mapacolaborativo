@@ -20,7 +20,6 @@ import oracle.jdbc.OracleTypes;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Session;
 import org.hibernate.jdbc.ReturningWork;
-import org.sede.core.anotaciones.Esquema;
 import org.sede.core.dao.Solr;
 import org.sede.core.exception.FormatoNoSoportadoException;
 import org.sede.core.rest.CheckeoParametros;
