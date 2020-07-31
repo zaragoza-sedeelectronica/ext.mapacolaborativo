@@ -495,7 +495,7 @@ END CATEGORIAS;
                                                               xmlelement("icon",nvl2(usr.image, 'https://www.zaragoza.es/cont/paginas/zona-personal/' || usr.image, null))
                                                               )
                                                     )
-                                                              from poi_comment c, noticias.users usr
+                                                              from poi_comment c, general.users usr
                                                               where c.id_agrupacion=m.id_agrupacion and c.id_poi=i.id_poi and c.id_usuario_adentra=usr.id
                                                    )
                                                    /*fin comentarios*/
@@ -570,7 +570,7 @@ END CATEGORIAS;
     is
     usuario varchar(300);
     BEGIN
-    select email into usuario from noticias.users where guid=pString;
+    select email into usuario from general.users where guid=pString;
     return usuario;
     EXCEPTION
       when NO_DATA_FOUND
