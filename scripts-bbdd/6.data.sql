@@ -113,6 +113,13 @@ Insert into POI_AGRUPACION_ASSOCIATED_TYPE (ID_AGRUPACION,TIPO,ASSOCIATED_ID) va
 Insert into POI_AGRUPACION_ASSOCIATED_TYPE (ID_AGRUPACION,TIPO,ASSOCIATED_ID) values ('113','incidencia','1716');
 Insert into POI_AGRUPACION_ASSOCIATED_TYPE (ID_AGRUPACION,TIPO,ASSOCIATED_ID) values ('114','incidencia','1715');
 Insert into POI_AGRUPACION_ASSOCIATED_TYPE (ID_AGRUPACION,TIPO,ASSOCIATED_ID) values ('116','incidencia','1714');
+REM INSERTING into POI_CATEGORIA
+SET DEFINE OFF;
+Insert into POI_CATEGORIA (ID,VALOR,TIPO,GCZ_USUARIO) values ('1','Tiendas','1',null);
+Insert into POI_CATEGORIA (ID,VALOR,TIPO,GCZ_USUARIO) values ('2','Centros','1',null);
+Insert into POI_CATEGORIA (ID,VALOR,TIPO,GCZ_USUARIO) values ('3','Juventud','1',null);
+Insert into POI_CATEGORIA (ID,VALOR,TIPO,GCZ_USUARIO) values ('4','Infancia','1',null);
+Insert into POI_CATEGORIA (ID,VALOR,TIPO,GCZ_USUARIO) values ('5','Deporte','1',null);
 REM INSERTING into POI_AGRUPACION_CATEGORY
 SET DEFINE OFF;
 Insert into POI_AGRUPACION_CATEGORY (ID_AGRUPACION,ID_CATEGORIA) values ('48','2');
@@ -149,16 +156,6 @@ Insert into POI_AGRUPACION_CATEGORY (ID_AGRUPACION,ID_CATEGORIA) values ('78','3
 Insert into POI_AGRUPACION_CATEGORY (ID_AGRUPACION,ID_CATEGORIA) values ('79','3');
 Insert into POI_AGRUPACION_CATEGORY (ID_AGRUPACION,ID_CATEGORIA) values ('111','2');
 Insert into POI_AGRUPACION_CATEGORY (ID_AGRUPACION,ID_CATEGORIA) values ('111','3');
-REM INSERTING into POI_CATEGORIA
-SET DEFINE OFF;
-Insert into POI_CATEGORIA (ID,VALOR,TIPO,GCZ_USUARIO) values ('1','Tiendas','1',null);
-Insert into POI_CATEGORIA (ID,VALOR,TIPO,GCZ_USUARIO) values ('2','Centros','1',null);
-Insert into POI_CATEGORIA (ID,VALOR,TIPO,GCZ_USUARIO) values ('3','Juventud','1',null);
-Insert into POI_CATEGORIA (ID,VALOR,TIPO,GCZ_USUARIO) values ('4','Infancia','1',null);
-Insert into POI_CATEGORIA (ID,VALOR,TIPO,GCZ_USUARIO) values ('5','Deporte','1',null);
-REM INSERTING into POI_COMMENT
-SET DEFINE OFF;
-Insert into POI_COMMENT (ID_POI,ID_AGRUPACION,ID_COMMENT,ID_USUARIO_ADENTRA,DESCRIPTION) values ('671','41','1','2','descripcion');
 REM INSERTING into POI_ETIQUETA
 SET DEFINE OFF;
 Insert into POI_ETIQUETA (ID_ETIQUETA,NOMBRE,TIPO,ORDEN,SQL,NOMBRELARGO) values ('1','title','99','1',null,'Titulo');
@@ -3318,3 +3315,29 @@ Insert into POI_VALOR_ETIQUETA (ID_POI,ID_ETIQUETA,VALOR,ID_AGRUPACION) values (
 Insert into POI_VALOR_ETIQUETA (ID_POI,ID_ETIQUETA,VALOR,ID_AGRUPACION) values ('nuevo-26','1','1. AUTOVÍA MUDEJAR','106');
 Insert into POI_VALOR_ETIQUETA (ID_POI,ID_ETIQUETA,VALOR,ID_AGRUPACION) values ('nuevo-26','12','http://www.zaragoza.es/contenidos/iconos/generico.png','106');
 Insert into POI_VALOR_ETIQUETA (ID_POI,ID_ETIQUETA,VALOR,ID_AGRUPACION) values ('nuevo-26','3','4609743.82964304,672754.8037358797','106');
+REM INSERTING into LIDERES
+SET DEFINE OFF;
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('10','76449','org.sede.servicio.actividades.entity.Acto','815','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('1','21','org.sede.servicio.acceso.entity.GczGrupoUsuario','21','org.sede.servicio.acceso.entity.GczUsuario');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('6','732','org.sede.servicio.equipamiento.entity.Equipamiento','674','org.sede.servicio.acceso.entity.GczUsuario');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('15','75740','org.sede.servicio.actividades.entity.Acto','2','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('30','2','org.sede.servicio.actividades.entity.Portal','21','org.sede.servicio.acceso.entity.GczUsuario');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('2','43','org.sede.servicio.equipamiento.entity.CentroSubtema','21','org.sede.servicio.acceso.entity.GczGrupoUsuario');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('13','211','org.sede.servicio.acceso.entity.GczGrupoUsuario','21','org.sede.servicio.acceso.entity.GczGrupoUsuario');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('14','76448','org.sede.servicio.actividades.entity.Acto','815','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('9','76447','org.sede.servicio.actividades.entity.Acto','815','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('11','210','org.sede.servicio.acceso.entity.GczGrupoUsuario','21','org.sede.servicio.acceso.entity.GczGrupoUsuario');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('12','136','org.sede.servicio.equipamiento.entity.CentroSubtema','21','org.sede.servicio.acceso.entity.GczGrupoUsuario');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('16','75741','org.sede.servicio.actividades.entity.Acto','2145','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('17','75741','org.sede.servicio.actividades.entity.Acto','2145','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('18','75741','org.sede.servicio.actividades.entity.Acto','2146','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('19','76446','org.sede.servicio.actividades.entity.Acto','2','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('20','76450','org.sede.servicio.actividades.entity.Acto','2144','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('21','76080','org.sede.servicio.actividades.entity.Acto','2144','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('22','76081','org.sede.servicio.actividades.entity.Acto','2144','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('23','76082','org.sede.servicio.actividades.entity.Acto','2144','org.sede.servicio.acceso.entity.Ciudadano');
+Insert into LIDERES (ID_LIDER,ID_ASOCIADO,TIPO_ASOCIADO,ID_USUARIO,TIPO_USUARIO) values ('24','11265','org.sede.servicio.equipamiento.entity.Equipamiento','675','org.sede.servicio.acceso.entity.GczUsuario');
+REM INSERTING into POI_COMMENT
+SET DEFINE OFF;
+Insert into POI_COMMENT (ID_POI,ID_AGRUPACION,ID_COMMENT,ID_USUARIO_ADENTRA,DESCRIPTION) values ('671','41','1','2','descripcion');
+COMMIT;
