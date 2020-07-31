@@ -30,7 +30,7 @@ Primero, hay que realizar los siguientes pasos del manual general:
 * prueba del módulo
 * otras configuraciones
 
-# Instalar y comprobar versiones software
+## Instalar y comprobar versiones software
 
 Las versiones mínimas del software son:
 
@@ -41,7 +41,7 @@ Las versiones mínimas del software son:
 
 Una vez instalado Eclipse, hay que instalar  maven integration for eclipse desde la siguiente url http://download.eclipse.org/releases/indigo/ y seleccionando la opción "Generarl Purpose -> m2e"
 
-# Configurar la base de datos
+## Configurar la base de datos
 
 El sistema de mapas colaborativos utiliza un usuario general para las bases de datos. Este ususario permite la gestión de los datos de usuarios de la plataforma y los datos de los mapas colaborativos.
 
@@ -56,8 +56,7 @@ A continuación se detallan los pasos a seguir en cada uno de ellos.
 
 Como se indica en el apartado anterior, hay que generar un usuario para la base de datos. El usuario se debe generar en Oracle ya que el sistema de mapas colaborativos utiliza Oracle.
 
-Se aconseja que el nombre del usuario sea "general" ya que es el que se utiliza en el core de la aplicación. A continuación se muestran los comandos que deben utilizarse en la consola de SQL*Plus, si se utiliza dicha consola para realizar este paso,
-o si se realiza desde SQLDeveloper o similar deberemos utiizar el usuario de Sistema (normalmente SYS) con privilegio para crear esquemas.
+Se aconseja que el nombre del usuario sea "general" ya que es el que se utiliza en el core de la aplicación. A continuación se muestran los comandos que deben utilizarse en la consola de SQL*Plus, si se utiliza dicha consola para realizar este paso, o si se realiza desde SQLDeveloper o similar deberemos utiizar el usuario de Sistema (normalmente SYS) con privilegio para crear esquemas.
 
 Para generar el usuario general se utilizarían los comandos de abajo, 
 
@@ -87,18 +86,18 @@ El orden de ejecución es el siguiente:
 	
 Si ejecutamos los scripts por primera vez no deberíamos obtener errores en la ejecución, lo que nos garantiza que la estuctura y datos son corectas. 
 
-# Clonar repositorios:
+## Clonar repositorios:
 
 A continuación se listan los repositorios a clonar: 
 
 * mapas colaborativos: https://<tuUsuario>@bitbucket.org/zaragoza/mapas-colaborativos.git
 (Puedes encontrar la url real en la cabecera de la página al acceder al proyecto desde bitbucket.org)
 
-# Uso de Internacionalización i18n
+## Uso de Internacionalización i18n
 
-el proyecto utiliza la internacionalización de mensajes, la configuración de esta funcionalidad está definida en el proyecto ext.core.web
-debe existir un fichero para cada idioma,por ejemplo, `messages_es.properties` para castellano. En mapas colaborativos los ficheros se encuentran en la 
-ruta **/ext.web.mapacolaborativo/src/main/webapp/i18n/**
+El proyecto utiliza la internacionalización de mensajes, la configuración de esta funcionalidad está definida en el proyecto ext.core.web para el cual debe existir un fichero para cada idioma, por ejemplo, `messages_es.properties` para el castellano. 
+
+En mapas colaborativos los ficheros se encuentran en la  ruta **/ext.web.mapacolaborativo/src/main/webapp/i18n/**
 ```
 	prueba=texto en castellano
 	prueba2=otro texto en castellano
@@ -107,15 +106,12 @@ ruta **/ext.web.mapacolaborativo/src/main/webapp/i18n/**
 *Nota:*
 El contenido de estos ficheros se actualiza según el parámetro `cacheSeconds` en al configuración del modulo ext.core.web, concretamente en el archivo 
 **/ext.core.web/src/main/java/org/sede/config/WebConfig.java** , si se desea cambiar la configuración será necesario importar el proyecto est.core.web 
-a nuestro IDE de desarrollo, y una vez modificada, realizar un *mvn install* sobre el mismo para actualizar las librerías del repositorio local de Maven **.m2**
-y hacer un (boton derecho sobre el proyecto ext.web.mapacolaborativo en Eclipse) para pulsar sobre *Manven/Update Project* y actualizar así el nuevo .jar generado
-en nuestro proyecto de mapas.
+a nuestro IDE de desarrollo, y una vez modificada, realizar un *mvn install* sobre el mismo para actualizar las librerías del repositorio local de Maven **.m2** y hacer un (boton derecho sobre el proyecto ext.web.mapacolaborativo en Eclipse) para pulsar sobre *Manven/Update Project* y actualizar así el nuevo .jar generado en nuestro proyecto de mapas.
 
 
-# Instalación de librerías en repositorio local:
+## Instalación de librerías en repositorio local:
 
-Existen librerías que no están disponibles en repositorios maven, son las que se encuentran en la carpeta [librerias](librerias/) y se deben instalar en el repositorio maven, 
-para ello, nos situamos en el directorio **librerias/** y usando un terminal ejecutamos las siguientes líneas:
+Existen librerías que no están disponibles en repositorios maven, son las que se encuentran en la carpeta [librerias](librerias/) y se deben instalar en el repositorio maven,  para ello, nos situamos en el directorio **librerias/** y usando un terminal ejecutamos las siguientes líneas:
 
 ```
 mvn install:install-file -DgroupId=org.zaragoza -DartifactId=opencity.ext.core.web -Dversion=0.0.1 -Dpackaging=jar -Dfile=opencity.ext.core-web-0.0.1.jar -DgeneratePom=true
@@ -142,7 +138,7 @@ mvn install:install-file -DgroupId=idezar -DartifactId=vecmath -Dversion=1.3.1 -
 
 ```
 
-#Configuración del contenido estático en Apache
+## Configuración del contenido estático en Apache
 Una vez clonado el proyecto, se habran generado una sertie de carpetas en nuestro repositorio local, en la ruta **\opencity.ext.web\src\main\webapp** encontramos
 el contenido estático de la aplicación, el cual, para mostrarse correctamente una vez desplegada debe servirse mediante un servidor Apache haciendo uso 
 de su funcionalidad ProxyPass. Para ello, una vez instalado Apache, creamos una carpeta llamada **cont** dentro del directorio de publicacion *htdocs* y dentro 
@@ -171,7 +167,6 @@ ProxyPassReverse /opencityext http://localhost:7777/opencityext
 AddDefaultCharset utf-8
 ```
 
-Si el contenido del directorio `cont` no se sirve mediante un servidor sino como un contenido estático, hay que habilitar los modulos `proxy` y `http_proxy` en el servidor Apache e incluir en el fichero de configuración:
 Además, añadimos la definicion del directorio y el Alias en el mismo archivo de configuración de apache:
 ```
 Alias /cont ${SRVROOT}/htdocs/cont	
@@ -182,21 +177,20 @@ Alias /cont ${SRVROOT}/htdocs/cont
 </Directory>
 ```
 
-# Configuración del módulo
+## Configuración del módulo
 
-Lo primero que debemos ahcer es 
+Lo primero que debemos hacer es ejecutar:
 
 ```
-$ mvn clean install
+mvn clean install
 ```
 
 dentro del proyecto `opencity.ext.mapacolaborativo` 
 
-Una vez realizado, hay que crear los siguientes ficheros de configuración en el modulo web:
+Una vez instalado hay que modificar/crear los siguientes ficheros de configuración en el modulo web:
 
 `/ext.web.mapacolaborativo/src/main/resources/META-INF/context.xml`
 `/ext.web.mapacolaborativo/src/main/resources/application.properties`
-
 
 Para obtener un ejemplo/plantilla de estos archivos de configuración podemos consultar o descargar el proyecto  **../zaragoza/shared-resources.git**
 
@@ -212,24 +206,22 @@ El contenido del fichero **context.xml** contiene los datos de conexión a la ba
               maxWait="-1"/>
 </Context>
 ```
-sustituyendo <puerto> <SID> y <pass> por los datos de nuestra configuración. 
+sustituyendo **puerto**, **SID** y **pass** por los datos de nuestra configuración. 
 Ejemplo a la hora de realizar este documento: 
 
 ```
-              url="jdbc:oracle:thin:@localhost:1521/ORCL"
+              url="jdbc:oracle:thin:@localhost:1521/orcl"
               username="general" password="general" maxActive="20" maxIdle="10"
 ```
 
 El contenido del fichero application.properties debe ser el siguiente:
 
 ```
-spring.encoding=UTF-8
-#contexto=/sede
 contexto=/opencityext
 path=localhost
-thymeleaf.view=<path-opencity.ext.web>/src/main/webapp/vistas/
+thymeleaf.view=<ruta-opencity.ext.web>/src/main/webapp/vistas/
 thymeleaf.strictMode=false
-path.i18n=<path-opencity.ext.web>/src/main/webapp/i18n
+path.i18n=<ruta-opencity.ext.web>/src/main/webapp/i18n
 datasource.prefix=java:/comp/env/
 path.solr=www.zaragoza.es
 path.allowed=localhost:7777,localhost,localhost:9999,localhost:7001
@@ -243,16 +235,16 @@ mail.pass=
 entorno=local
 path.cont=http://localhost:8090/cont
 path.cont.external=http://localhost:8090/cont/
-path.cont.disk=<path-apache-httdocs>/cont
-path.vistas.disk=<path-apache-httdocs>/cont/vistas
-path.aplicaciones.disk=<path-apache-httdocs>/cont/aplicaciones/
+path.cont.disk=<ruta-apache-httdocs>/cont
+path.vistas.disk=<ruta-apache-httdocs>/cont/vistas
+path.aplicaciones.disk=<ruta-apache-httdocs>/cont/aplicaciones/
 virtuoso.sparql=http://datos.zaragoza.es/sparql
 virtuoso.user=
 virtuoso.pass=
 virtuoso.connection=
 sms.server=
 ```
-Sustituyendo el contenido de <path-opencity.ext.web> y <path-apache-httdocs> por las rutas relativas/absolutas a cada carpeta.
+Sustituyendo el contenido de  `ruta-opencity.ext.web` y  `ruta-apache-httdocs` por las rutas relativas/absolutas a cada carpeta.
 
 Esta definición se puede realizar para cada uno de los entornos en `resources`, `resources-dev`, `resources-prod` y `resources-test`.
 
@@ -282,16 +274,17 @@ Para probar que funciona correctamente acceder a:
 http://localhost:7777/opencityext/servicio/mapa-colaborativo/
 ```
 
-Puede ser que haya elementos que no se muestren correctamente por lo que se aconseja que mejor se utilice 
+Puede ser que haya elementos que no se muestren correctamente por lo que se aconseja que mejor se utilice: 
 ```
 http://localhost:<apache-port>/opencityext/servicio/mapa-colaborativo/
 ```
-Sustituyendo <apache-port> por el puerto habilitado en Apache mediante la intrucción **Listen XX** utilizada en el archivo de configuración httpd.conf (en Windows).
+sustituyendo `apache-port` por el puerto habilitado en Apache mediante la intrucción **Listen XX** utilizada en el archivo de configuración httpd.conf (Windows).
+
 Ejemplos:
 En Apache Listen 80    -->  http://localhost/opencityext/servicio/mapa-colaborativo/
 En Apachae Listen 8090 -->  http://localhost:8090/opencityext/servicio/mapa-colaborativo/
 
-siempre asegurándonos de que el servidor Apache está arrancado. (httpd -k start)
+siempre asegurándonos de que el servidor Apache está arrancado.  `httpd -k start`
 
 # Otras configuraciones
 
