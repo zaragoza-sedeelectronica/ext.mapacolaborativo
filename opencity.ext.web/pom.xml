@@ -5,6 +5,9 @@
   <version>0.0.1</version>
   <packaging>war</packaging>
   <name>opencityext</name>
+  <properties>
+   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   
   	<dependencies>
 		<dependency>
@@ -33,6 +36,7 @@
 				<artifactId>maven-remote-resources-plugin</artifactId>
 				<version>1.7.0</version>
 				<configuration>
+					<encoding>UTF-8</encoding>
 					<resourceBundles>
 						<resourceBundle>org.opencity:shared-resources:0.0.1</resourceBundle>
 					</resourceBundles>

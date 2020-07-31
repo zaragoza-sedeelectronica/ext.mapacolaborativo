@@ -9,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 import org.sede.core.PropiedadesTest;
 import org.sede.core.TestPeticion;
 import org.sede.core.db.DataSourceRule;
+import org.sede.core.filter.GZipFilter;
 import org.sede.core.rest.CheckeoParametros;
 import org.sede.core.rest.MimeTypes;
 import org.sede.core.utils.Funciones;
@@ -63,7 +64,7 @@ public class MapaColaborativoApiTest {
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(context).addFilters(new GZipFilter()).build();
 		peticion.setMock(mockMvc);
 	}
 	
@@ -199,7 +200,7 @@ public class MapaColaborativoApiTest {
 				+ "		}"
 				+ "	}]"
 				+ "}";
-		MvcResult result = peticion.post("/" + MAPPING + "/user/" + PropiedadesTest.getUserId()
+		MvcResult result = peticion.post("/" + MAPPING + "/user/" + PropiedadesTest.getUserId() + ".json?debug=s"
 					, body)
 				.andExpect(status().isOk())
 				.andReturn()
@@ -229,7 +230,7 @@ public class MapaColaborativoApiTest {
 		String body = "{"
 				+ "    \"title\": \"Columpios2\""
 				+ "}";
-		MvcResult result = peticion.post("/" + MAPPING + "/user/" + PropiedadesTest.getUserId()
+		MvcResult result = peticion.post("/" + MAPPING + "/user/" + PropiedadesTest.getUserId() + "?debug=s"
 					, body)
 				.andExpect(status().isOk())
 				.andReturn()
@@ -271,7 +272,7 @@ public class MapaColaborativoApiTest {
 				+ "        }"
 				+ "    ]"
 				+ "}";
-		MvcResult result = peticion.post("/" + MAPPING + "/user/" + PropiedadesTest.getUserId()
+		MvcResult result = peticion.post("/" + MAPPING + "/user/" + PropiedadesTest.getUserId() + "?debug=s"
 					, body)
 				.andExpect(status().isOk())
 				.andReturn()
