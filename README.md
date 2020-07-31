@@ -141,7 +141,7 @@ mvn install:install-file -DgroupId=idezar -DartifactId=vecmath -Dversion=1.3.1 -
 ## Configuración del contenido estático en Apache
 Una vez clonado el proyecto, se habran generado una sertie de carpetas en nuestro repositorio local, en la ruta **\opencity.ext.web\src\main\webapp** encontramos
 el contenido estático de la aplicación, el cual, para mostrarse correctamente una vez desplegada debe servirse mediante un servidor Apache haciendo uso 
-de su funcionalidad ProxyPass. Para ello, una vez instalado Apache, creamos una carpeta llamada **cont** dentro del directorio de publicacion *htdocs* y dentro 
+de su funcionalidad ProxyPass. Para ello, una vez instalado Apache, creamos una carpeta llamada **cont** dentro del directorio de publicacion **httdocs** y dentro 
 de esta colocamos el contenido estático seguiendo la siguiente estructura:
 
 ```
@@ -278,11 +278,11 @@ Puede ser que haya elementos que no se muestren correctamente por lo que se acon
 ```
 http://localhost:<apache-port>/opencityext/servicio/mapa-colaborativo/
 ```
-sustituyendo `apache-port` por el puerto habilitado en Apache mediante la intrucción **Listen XX** utilizada en el archivo de configuración httpd.conf (Windows).
+sustituyendo `apache-port` por el puerto habilitado en Apache mediante la intrucción `Listen <puerto>` utilizada en el archivo de configuración httpd.conf (Windows).
 
 Ejemplos:
-En Apache Listen 80    -->  http://localhost/opencityext/servicio/mapa-colaborativo/
-En Apachae Listen 8090 -->  http://localhost:8090/opencityext/servicio/mapa-colaborativo/
+Usando `Listen 80` en httpd.conf:    http://localhost/opencityext/servicio/mapa-colaborativo/
+Usando `Listen 8090` en httpd.conf:  http://localhost:8090/opencityext/servicio/mapa-colaborativo/
 
 siempre asegurándonos de que el servidor Apache está arrancado.  `httpd -k start`
 
