@@ -1,3 +1,15 @@
+/* Copyright (C) 2020 Oficina Técnica de Participación, Transparenica y Gobierno Abierto del Ayuntamiento de Zaragoza
+ * 
+ * Este fichero es parte del "Mapas Colaborativos - Open City Zaragoza".
+ *
+ * "Mapas Colaborativos - Open City Zaragoza" es un software libre; usted puede utilizar esta obra respetando la licencia GNU General Public License, versión 3 o posterior, publicada por Free Software Foundation
+ *
+ * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL», SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones que establece la Licencia. 
+ *
+ * Para más información, puede contactar con los autores en: gobiernoabierto@zaragoza.es, sedelectronica@zaragoza.es
+ */
+
 package org.sede.servicio.mapacolaborativo;
 
 import java.math.BigDecimal;
@@ -57,7 +69,7 @@ import com.googlecode.genericdao.search.SearchResult;
 @Controller
 @RequestMapping(value = "/" + MapaColaborativoController.MAPPING, method = RequestMethod.GET)
 @Description("Gobierno abierto: Mapas colaborativos")
-// TODO aÃ±adir anotaciÃ³n cache en apidetalle(hacer que no haya cachÃ© al modificar)
+// TODO añadir anotación cache en apidetalle(hacer que no haya caché al modificar)
 public class MapaColaborativoController {
 	/**
 	 *  Variable servicio
@@ -121,7 +133,7 @@ public class MapaColaborativoController {
 	 */
 	@OpenData
 	@NoCache
-	@Description("Listado de categorÃ­as")
+	@Description("Listado de categorías")
 	@ResponseClass(value = MapaColaborativo.class, entity = SearchResult.class)
 	@RequestMapping(value = "/category", method = RequestMethod.GET, produces = {MimeTypes.JSON, MimeTypes.XML, MimeTypes.CSV, MimeTypes.JSONLD, MimeTypes.RDF, MimeTypes.TURTLE, MimeTypes.RDF_N3})
 	public @ResponseBody ResponseEntity<?> apiListarCategory() {
@@ -230,7 +242,7 @@ public class MapaColaborativoController {
 				return dao.guardar(registro, Funciones.getAccountIdUserGestor(request), Funciones.getPeticion());
 			}
 		} else {
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new Mensaje(HttpStatus.FORBIDDEN.value(), "OperaciÃ³n no permitida"));
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new Mensaje(HttpStatus.FORBIDDEN.value(), "Operación no permitida"));
 		}
 		
 		
@@ -393,7 +405,7 @@ public class MapaColaborativoController {
 	}
 
 	/**
-	 * Metodo ediciÃ³n
+	 * Metodo edición
 	 */
 	@PermisosUser
 	@NoCache
